@@ -1,9 +1,9 @@
-SELECT
-    tracker,
-    CASE
-        WHEN finished = true THEN 2
-        WHEN cancelled = true THEN -1
-        WHEN inDelivery = true THEN 1
-        ELSE 0
-    END AS статус
-FROM Couriers;
+SELECT O.track AS Trak,
+       CASE
+           WHEN O.finished = TRUE THEN 2
+           WHEN O.cancelled = TRUE THEN -1
+           WHEN O.inDelivery = TRUE THEN 1
+           ELSE 0
+       END AS Status
+FROM Orders AS O
+INNER JOIN Couriers AS C ON O.courierId = C.id;
