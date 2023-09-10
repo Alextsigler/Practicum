@@ -1,4 +1,5 @@
-SELECT login, COUNT(*) AS kolvo_zakazov
-FROM Couriers
-WHERE inDelivery = true
-GROUP BY login;
+SELECT c.login AS CourierLogin, COUNT(o.courierId) AS OrdersInDelivery
+FROM Couriers c
+LEFT JOIN Orders o ON c.id = o.courierId
+WHERE o.inDelivery = true
+GROUP BY c.login;
