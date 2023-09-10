@@ -1,0 +1,4 @@
+SELECT login, COUNT(*) AS kolvo_zakazov
+FROM Couriers
+WHERE inDelivery = true
+GROUP BY login;
